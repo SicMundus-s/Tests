@@ -21,7 +21,7 @@ class Converter {
         StringBuilder roman = new StringBuilder();
         int arabianKey;
         do {
-            arabianKey = arabianKeyMap.floorKey(number); // Возвращает наибольший ключ, меньший или равный данному
+            arabianKey = arabianKeyMap.floorKey(number); // Р’РѕР·РІСЂР°С‰Р°РµС‚ РЅР°РёР±РѕР»СЊС€РёР№ РєР»СЋС‡, РјРµРЅСЊС€РёР№ РёР»Рё СЂР°РІРЅС‹Р№ РґР°РЅРЅРѕРјСѓ
             roman.append(arabianKeyMap.get(arabianKey));
             number -= arabianKey;
         } while (number != 0);

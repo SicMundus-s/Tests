@@ -1,6 +1,6 @@
 class MathematicalOperation {
 
-    // Ищем нужный символ в строке. indexOf() возвращает индекс первого вхождения символа в строке
+    // РС‰РµРј РЅСѓР¶РЅС‹Р№ СЃРёРјРІРѕР» РІ СЃС‚СЂРѕРєРµ. indexOf() РІРѕР·РІСЂР°С‰Р°РµС‚ РёРЅРґРµРєСЃ РїРµСЂРІРѕРіРѕ РІС…РѕР¶РґРµРЅРёСЏ СЃРёРјРІРѕР»Р° РІ СЃС‚СЂРѕРєРµ
     public static char getMathematicalOperation(String str1) {
 
         char mathematicalOperation = '?';

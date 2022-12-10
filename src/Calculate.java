@@ -11,9 +11,8 @@ class Calculate {
             arabicResult = calculateValueOne * calculateValueTwo;
         }
         if (mathematicalOperation == '/') {
-            //проверка деления на 0
             if (calculateValueTwo == 0) {
-                System.out.println("На ноль делить мы не умеем, программа завершает свою работу");
+                System.out.println("РћС€РёР±РєР°! Р”РµР»РµРЅРёРµ РЅР° РЅРѕР»СЊ!");
                 System.exit(0);
             }
             arabicResult = (calculateValueOne - (calculateValueOne % calculateValueTwo)) / calculateValueTwo;

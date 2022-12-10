@@ -9,7 +9,7 @@ public class Main {
 
     public static void main(String[] args) {
         Scanner in = new Scanner(System.in);
-        System.out.println("Введите выражение(пример: 1 + 2 или I + II):");
+        System.out.println("Р’РІРµРґРёС‚Рµ РІС‹СЂР°Р¶РµРЅРёРµ(РїСЂРёРјРµСЂ: 1 + 2 РёР»Рё I + II):");
         String input = in.nextLine();
         System.out.println(calc(input));
     }
@@ -18,7 +18,7 @@ public class Main {
 
         int calculateValueOne = -1;
         int calculateValueTwo = -1;
-        boolean isFlagCheckingWhichNumberSystemAndTrueWheEqualToRoman = false; // Флаг не очень хорошая практика. ToDo: По возможности избавиться от него.
+        boolean isFlagCheckingWhichNumberSystemAndTrueWheEqualToRoman = false; // Р¤Р»Р°Рі РЅРµ РѕС‡РµРЅСЊ С…РѕСЂРѕС€Р°СЏ РїСЂР°РєС‚РёРєР°. ToDo: РџРѕ РІРѕР·РјРѕР¶РЅРѕСЃС‚Рё РёР·Р±Р°РІРёС‚СЊСЃСЏ РѕС‚ РЅРµРіРѕ.
 
         String str1 = input.replaceAll(" ", "");
 
@@ -27,7 +27,7 @@ public class Main {
 
         if (mathematicalOperation == '?') {
             try {
-                throw new MathematicalOperationException("throws Exception //т.к. строка не является математической операцией");
+                throw new MathematicalOperationException("throws Exception //С‚.Рє. СЃС‚СЂРѕРєР° РЅРµ СЏРІР»СЏРµС‚СЃСЏ РјР°С‚РµРјР°С‚РёС‡РµСЃРєРѕР№ РѕРїРµСЂР°С†РёРµР№");
             } catch (MathematicalOperationException e){
                 System.out.println(e.getMessage());
                 System.exit(0);
@@ -37,7 +37,7 @@ public class Main {
             index = str1.indexOf(mathematicalOperation);
         }
 
-        // Пробегаемся по массивам арабский и римский чисел, и находим совпадение с пользовательским вводом
+        // РџСЂРѕР±РµРіР°РµРјСЃСЏ РїРѕ РјР°СЃСЃРёРІР°Рј Р°СЂР°Р±СЃРєРёР№ Рё СЂРёРјСЃРєРёР№ С‡РёСЃРµР», Рё РЅР°С…РѕРґРёРј СЃРѕРІРїР°РґРµРЅРёРµ СЃ РїРѕР»СЊР·РѕРІР°С‚РµР»СЊСЃРєРёРј РІРІРѕРґРѕРј
         String variable1str = str1.substring(0, index);
         for (int i = 0; i < roman.length; i++) {
             String variableForCompare = roman[i];
@@ -57,8 +57,8 @@ public class Main {
         }
         if (calculateValueOne == -1) {
             try {
-                throw new MathematicalConditionsException("throws Exception //т.к. формат математической операции не удовлетворяет заданию" +
-                                                          " - два операнда и один оператор EXC (+, -, /, *)");
+                throw new MathematicalConditionsException("throws Exception //С‚.Рє. С„РѕСЂРјР°С‚ РјР°С‚РµРјР°С‚РёС‡РµСЃРєРѕР№ РѕРїРµСЂР°С†РёРё РЅРµ СѓРґРѕРІР»РµС‚РІРѕСЂСЏРµС‚ Р·Р°РґР°РЅРёСЋ" +
+                                                          " - РґРІР° РѕРїРµСЂР°РЅРґР° Рё РѕРґРёРЅ РѕРїРµСЂР°С‚РѕСЂ EXC (+, -, /, *)");
             } catch (MathematicalConditionsException e){
                 System.out.println(e.getMessage());
                 System.exit(0);
@@ -66,14 +66,14 @@ public class Main {
         }
 
 
-        // Выполняем те же операции для второй переменной с учетом того, что она может быть в другой системе счисления(Используем flag)
+        // Р’С‹РїРѕР»РЅСЏРµРј С‚Рµ Р¶Рµ РѕРїРµСЂР°С†РёРё РґР»СЏ РІС‚РѕСЂРѕР№ РїРµСЂРµРјРµРЅРЅРѕР№ СЃ СѓС‡РµС‚РѕРј С‚РѕРіРѕ, С‡С‚Рѕ РѕРЅР° РјРѕР¶РµС‚ Р±С‹С‚СЊ РІ РґСЂСѓРіРѕР№ СЃРёСЃС‚РµРјРµ СЃС‡РёСЃР»РµРЅРёСЏ(РСЃРїРѕР»СЊР·СѓРµРј flag)
         String variable2str = str1.substring(index + 1);
         for (int i = 0; i < roman.length; i++) {
             String variableForCompare = roman[i];
             if (variable2str.equalsIgnoreCase(variableForCompare)) {
                 if (!isFlagCheckingWhichNumberSystemAndTrueWheEqualToRoman) {
                     try {
-                        throw new NumberSystemsException("throws Exception //т.к. используются одновременно разные системы счисления");
+                        throw new NumberSystemsException("throws Exception //С‚.Рє. РёСЃРїРѕР»СЊР·СѓСЋС‚СЃСЏ РѕРґРЅРѕРІСЂРµРјРµРЅРЅРѕ СЂР°Р·РЅС‹Рµ СЃРёСЃС‚РµРјС‹ СЃС‡РёСЃР»РµРЅРёСЏ");
                     } catch (NumberSystemsException e){
                         System.out.println(e.getMessage());
                         System.exit(0);
@@ -87,7 +87,7 @@ public class Main {
             if (variable2str.equalsIgnoreCase(variableForCompare)) {
                 if (isFlagCheckingWhichNumberSystemAndTrueWheEqualToRoman) {
                     try {
-                        throw new NumberSystemsException("throws Exception //т.к. используются одновременно разные системы счисления");
+                        throw new NumberSystemsException("throws Exception //С‚.Рє. РёСЃРїРѕР»СЊР·СѓСЋС‚СЃСЏ РѕРґРЅРѕРІСЂРµРјРµРЅРЅРѕ СЂР°Р·РЅС‹Рµ СЃРёСЃС‚РµРјС‹ СЃС‡РёСЃР»РµРЅРёСЏ");
                     } catch (NumberSystemsException e){
                         System.out.println(e.getMessage());
                         System.exit(0);
@@ -98,8 +98,8 @@ public class Main {
         }
         if (calculateValueTwo == -1) {
             try {
-                throw new MathematicalConditionsException("throws Exception //т.к. формат математической операции не удовлетворяет заданию" +
-                                                          " - два операнда и один оператор EXC (+, -, /, *)");
+                throw new MathematicalConditionsException("throws Exception //С‚.Рє. С„РѕСЂРјР°С‚ РјР°С‚РµРјР°С‚РёС‡РµСЃРєРѕР№ РѕРїРµСЂР°С†РёРё РЅРµ СѓРґРѕРІР»РµС‚РІРѕСЂСЏРµС‚ Р·Р°РґР°РЅРёСЋ" +
+                                                          " - РґРІР° РѕРїРµСЂР°РЅРґР° Рё РѕРґРёРЅ РѕРїРµСЂР°С‚РѕСЂ EXC (+, -, /, *)");
             } catch (MathematicalConditionsException e){
                 System.out.println(e.getMessage());
                 System.exit(0);
@@ -116,7 +116,7 @@ public class Main {
             result = String.valueOf(arabicResult);
         } else if (arabicResult < 0) {
             try {
-                throw new NegativeNumberException("throws Exception //т.к. в римской системе нет отрицательных чисел");
+                throw new NegativeNumberException("throws Exception //С‚.Рє. РІ СЂРёРјСЃРєРѕР№ СЃРёСЃС‚РµРјРµ РЅРµС‚ РѕС‚СЂРёС†Р°С‚РµР»СЊРЅС‹С… С‡РёСЃРµР»");
             } catch (NegativeNumberException e){
                 System.out.println(e.getMessage());
                 System.exit(0);
