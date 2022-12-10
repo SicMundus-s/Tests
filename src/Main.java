@@ -37,7 +37,7 @@ public class Main {
             index = str1.indexOf(mathematicalOperation);
         }
 
-        // Пробегаемся по массивам арабский и римский чисел, и находим совпадение с пользовательским вводом
+        // Пробегаемся по массивам арабским и римсим чиселам, и находим совпадение с пользовательским вводом
         String variable1str = str1.substring(0, index);
         for (int i = 0; i < roman.length; i++) {
             String variableForCompare = roman[i];
