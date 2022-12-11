@@ -58,7 +58,7 @@ public class Main {
         if (calculateValueOne == -1) {
             try {
                 throw new MathematicalConditionsException("throws Exception //т.к. формат математической операции не удовлетворяет заданию" +
-                                                          " - два операнда и один оператор EXC (+, -, /, *)");
+                                                          " - два операнда и один оператор (+, -, /, *)");
             } catch (MathematicalConditionsException e){
                 System.out.println(e.getMessage());
                 System.exit(0);
@@ -99,7 +99,7 @@ public class Main {
         if (calculateValueTwo == -1) {
             try {
                 throw new MathematicalConditionsException("throws Exception //т.к. формат математической операции не удовлетворяет заданию" +
-                                                          " - два операнда и один оператор EXC (+, -, /, *)");
+                                                          " - два операнда и один оператор (+, -, /, *)");
             } catch (MathematicalConditionsException e){
                 System.out.println(e.getMessage());
                 System.exit(0);
