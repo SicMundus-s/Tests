@@ -15,7 +15,7 @@ class Calculate {
                 System.out.println("Ошибка! Деление на ноль!");
                 System.exit(0);
             }
-            arabicResult = (calculateValueOne - (calculateValueOne % calculateValueTwo)) / calculateValueTwo;
+            arabicResult = calculateValueOne / calculateValueTwo;
         }
         return arabicResult;
     }

@@ -18,12 +18,12 @@ public class Main {
 
         int calculateValueOne = -1;
         int calculateValueTwo = -1;
-        boolean isFlagCheckingWhichNumberSystemAndTrueWheEqualToRoman = false; // Флаг не очень хорошая практика. ToDo: По возможности избавиться от него.
+        boolean isFlagCheckingWhichNumberSystemAndTrueWheEqualToRoman = false; // Флаг не очень хорошая практика.
 
-        String str1 = input.replaceAll(" ", "");
+        String str = input.replaceAll(" ", "");
 
         int index = -1;
-        char mathematicalOperation = MathematicalOperation.getMathematicalOperation(str1);
+        char mathematicalOperation = MathematicalOperation.getMathematicalOperation(str);
 
         if (mathematicalOperation == '?') {
             try {
@@ -34,43 +34,45 @@ public class Main {
             }
 
         } else {
-            index = str1.indexOf(mathematicalOperation);
+            index = str.indexOf(mathematicalOperation);
         }
 
         // Пробегаемся по массивам арабским и римсим чиселам, и находим совпадение с пользовательским вводом
-        String variable1str = str1.substring(0, index);
+        String calculateValueOneStr = str.substring(0, index);
         for (int i = 0; i < roman.length; i++) {
-            String variableForCompare = roman[i];
-            if (variable1str.equalsIgnoreCase(variableForCompare)) {
+            String romanTempForEquals = roman[i];
+            if (calculateValueOneStr.equalsIgnoreCase(romanTempForEquals)) {
                 calculateValueOne = i + 1;
                 isFlagCheckingWhichNumberSystemAndTrueWheEqualToRoman = true;
                 break;
             }
         }
         for (int i = 0; i < arabic.length; i++) {
-            String variableForCompare = arabic[i];
-            if (variable1str.equalsIgnoreCase(variableForCompare)) {
+            String arabicTempForEquals = arabic[i];
+            if (calculateValueOneStr.equalsIgnoreCase(arabicTempForEquals)) {
                 calculateValueOne = i + 1;
                 isFlagCheckingWhichNumberSystemAndTrueWheEqualToRoman = false;
                 break;
             }
         }
-        if (calculateValueOne == -1) {
-            try {
-                throw new MathematicalConditionsException("throws Exception //т.к. формат математической операции не удовлетворяет заданию" +
-                                                          " - два операнда и один оператор (+, -, /, *)");
-            } catch (MathematicalConditionsException e){
-                System.out.println(e.getMessage());
-                System.exit(0);
-            }
-        }
+        checkInputCondition(calculateValueOne);
 
 
         // Выполняем те же операции для второй переменной с учетом того, что она может быть в другой системе счисления(Используем flag)
-        String variable2str = str1.substring(index + 1);
+        String calculateValueTwoStr = str.substring(index + 1);
+
+        try {
+            if(Integer.parseInt(calculateValueTwoStr) == 0){
+                throw new ArithmeticException("throws Exception //т.к. деление на ноль");
+            }
+        }catch (ArithmeticException e) {
+            System.out.println(e.getMessage());
+            System.exit(0);
+        }
+
         for (int i = 0; i < roman.length; i++) {
-            String variableForCompare = roman[i];
-            if (variable2str.equalsIgnoreCase(variableForCompare)) {
+            String romanTempForEquals = roman[i];
+            if (calculateValueTwoStr.equalsIgnoreCase(romanTempForEquals)) {
                 if (!isFlagCheckingWhichNumberSystemAndTrueWheEqualToRoman) {
                     try {
                         throw new NumberSystemsException("throws Exception //т.к. используются одновременно разные системы счисления");
@@ -83,8 +85,8 @@ public class Main {
             }
         }
         for (int i = 0; i < arabic.length; i++) {
-            String variableForCompare = arabic[i];
-            if (variable2str.equalsIgnoreCase(variableForCompare)) {
+            String arabicTempForEquals = arabic[i];
+            if (calculateValueTwoStr.equalsIgnoreCase(arabicTempForEquals)) {
                 if (isFlagCheckingWhichNumberSystemAndTrueWheEqualToRoman) {
                     try {
                         throw new NumberSystemsException("throws Exception //т.к. используются одновременно разные системы счисления");
@@ -96,15 +98,8 @@ public class Main {
                 calculateValueTwo = i + 1;
             }
         }
-        if (calculateValueTwo == -1) {
-            try {
-                throw new MathematicalConditionsException("throws Exception //т.к. формат математической операции не удовлетворяет заданию" +
-                                                          " - два операнда и один оператор (+, -, /, *)");
-            } catch (MathematicalConditionsException e){
-                System.out.println(e.getMessage());
-                System.exit(0);
-            }
-        }
+
+        checkInputCondition(calculateValueTwo);
 
 
 
@@ -124,5 +119,17 @@ public class Main {
         }
         return result;
 
+    }
+
+    public static void checkInputCondition(int calculateValue) {
+        if (calculateValue == -1) {
+            try {
+                throw new MathematicalConditionsException("throws Exception //т.к. формат математической операции не удовлетворяет заданию" +
+                        " - два операнда и один оператор (+, -, /, *)");
+            } catch (MathematicalConditionsException e){
+                System.out.println(e.getMessage());
+                System.exit(0);
+            }
+        }
     }
 }
