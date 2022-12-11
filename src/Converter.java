@@ -9,6 +9,7 @@ class Converter {
         arabianKeyMap.put(5, "V");
         arabianKeyMap.put(4, "IV");
         arabianKeyMap.put(1, "I");
+        arabianKeyMap.put(0, "в римской системе нет нуля:)");
 
         StringBuilder roman = new StringBuilder();
         int arabianKey;

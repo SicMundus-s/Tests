@@ -9,7 +9,7 @@ public class Main {
 
     public static void main(String[] args) {
         Scanner in = new Scanner(System.in);
-        System.out.println("Введите выражение(пример: 1 + 2 или I + II):");
+        System.out.println("Введите выражение(пример: 1 + 2 или I + II), ноль не является верным фарматом ввода");
         String input = in.nextLine();
         System.out.println(calc(input));
     }
@@ -18,7 +18,7 @@ public class Main {
 
         int calculateValueOne = -1;
         int calculateValueTwo = -1;
-        boolean isFlagCheckingWhichNumberSystemAndTrueWheEqualToRoman = false; // Флаг не очень хорошая практика.
+        boolean isFlagCheckingWhichNumberSystemAndTrueWhenEqualToRoman = false; // Флаг не очень хорошая практика.
 
         String str = input.replaceAll(" ", "");
 
@@ -43,7 +43,7 @@ public class Main {
             String romanTempForEquals = roman[i];
             if (calculateValueOneStr.equalsIgnoreCase(romanTempForEquals)) {
                 calculateValueOne = i + 1;
-                isFlagCheckingWhichNumberSystemAndTrueWheEqualToRoman = true;
+                isFlagCheckingWhichNumberSystemAndTrueWhenEqualToRoman = true;
                 break;
             }
         }
@@ -51,7 +51,7 @@ public class Main {
             String arabicTempForEquals = arabic[i];
             if (calculateValueOneStr.equalsIgnoreCase(arabicTempForEquals)) {
                 calculateValueOne = i + 1;
-                isFlagCheckingWhichNumberSystemAndTrueWheEqualToRoman = false;
+                isFlagCheckingWhichNumberSystemAndTrueWhenEqualToRoman = false;
                 break;
             }
         }
@@ -61,19 +61,10 @@ public class Main {
         // Выполняем те же операции для второй переменной с учетом того, что она может быть в другой системе счисления(Используем flag)
         String calculateValueTwoStr = str.substring(index + 1);
 
-        try {
-            if(Integer.parseInt(calculateValueTwoStr) == 0){
-                throw new ArithmeticException("throws Exception //т.к. деление на ноль");
-            }
-        }catch (ArithmeticException e) {
-            System.out.println(e.getMessage());
-            System.exit(0);
-        }
-
         for (int i = 0; i < roman.length; i++) {
             String romanTempForEquals = roman[i];
             if (calculateValueTwoStr.equalsIgnoreCase(romanTempForEquals)) {
-                if (!isFlagCheckingWhichNumberSystemAndTrueWheEqualToRoman) {
+                if (!isFlagCheckingWhichNumberSystemAndTrueWhenEqualToRoman) {
                     try {
                         throw new NumberSystemsException("throws Exception //т.к. используются одновременно разные системы счисления");
                     } catch (NumberSystemsException e){
@@ -87,7 +78,7 @@ public class Main {
         for (int i = 0; i < arabic.length; i++) {
             String arabicTempForEquals = arabic[i];
             if (calculateValueTwoStr.equalsIgnoreCase(arabicTempForEquals)) {
-                if (isFlagCheckingWhichNumberSystemAndTrueWheEqualToRoman) {
+                if (isFlagCheckingWhichNumberSystemAndTrueWhenEqualToRoman) {
                     try {
                         throw new NumberSystemsException("throws Exception //т.к. используются одновременно разные системы счисления");
                     } catch (NumberSystemsException e){
@@ -105,11 +96,11 @@ public class Main {
 
         int arabicResult = Calculate.getArabResult(calculateValueOne, calculateValueTwo, mathematicalOperation);
         String result = "";
-        if (isFlagCheckingWhichNumberSystemAndTrueWheEqualToRoman && arabicResult > 0) {
+        if (isFlagCheckingWhichNumberSystemAndTrueWhenEqualToRoman && arabicResult >= 0) {
             result = Converter.intToRoman(arabicResult);
-        } else if (!isFlagCheckingWhichNumberSystemAndTrueWheEqualToRoman) {
+        } else if (!isFlagCheckingWhichNumberSystemAndTrueWhenEqualToRoman) {
             result = String.valueOf(arabicResult);
-        } else if (arabicResult < 0) {
+        } else {
             try {
                 throw new NegativeNumberException("throws Exception //т.к. в римской системе нет отрицательных чисел");
             } catch (NegativeNumberException e){
