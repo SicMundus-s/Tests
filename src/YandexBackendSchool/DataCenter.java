@@ -10,9 +10,9 @@ public class DataCenter {
         this.A = a;
         this.R = R + 1;
     }
-    public void disable(int serverDataCenter) {
-        if (!(A.get(serverDataCenter) == null)) { // ToDo
-            A.remove(serverDataCenter);
+    public void disable(int serverDataCenter) { // index не сохраняется
+        if (!(A.get(serverDataCenter - 1) == null)) { // ToDo
+            A.remove(serverDataCenter - 1);
         }
     }
 

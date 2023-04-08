@@ -26,6 +26,7 @@ public class ColyiAndDataCenter {
             dataCenters.add(center);
         }
 
+
         // Обработка событий
         for (int i = 0; i < q; i++) {
             int idDataCenter = 0;
@@ -38,21 +39,25 @@ public class ColyiAndDataCenter {
                  serverDataCenter = scanner.nextInt();// id сервера в определённом дата центре
             }
 
-            DataCenter dataCenter = dataCenters.get(idDataCenter);
             switch (operation) {
                 case ("RESET") -> {
-                   List<Integer> a = IntStream.range(1, m).boxed().toList();
+                    List<Integer> a = new ArrayList<>();
+                    for (int j = 0; j < m; j++) {
+                        a.add(j + 1);
+                    }
+                   DataCenter dataCenter = dataCenters.get(idDataCenter - 1);
                    dataCenter.reset(a);
                 }
 
                 case ("DISABLE") -> {
+                    DataCenter dataCenter = dataCenters.get(idDataCenter - 1);
                     dataCenter.disable(serverDataCenter);
                 }
                 case ("GETMAX") -> {
                     int max = 0;
-                    int id = 0;
+                    int id = 1;
                     for (int j = 0; j < dataCenters.size(); j++) {
-                        DataCenter dataCenterMaxValue = dataCenters.get(i);
+                        DataCenter dataCenterMaxValue = dataCenters.get(j);
                         int temp = dataCenterMaxValue.getA().size() * dataCenterMaxValue.getR();
                         if (max < temp) {
                             max = temp;
@@ -63,9 +68,9 @@ public class ColyiAndDataCenter {
                 }
                 case ("GETMIN") -> {
                     int min = 0;
-                    int id = 0;
+                    int id = 1;
                     for (int j = 0; j < dataCenters.size(); j++) {
-                        DataCenter dataCenterMaxValue = dataCenters.get(i);
+                        DataCenter dataCenterMaxValue = dataCenters.get(j);
                         int temp = dataCenterMaxValue.getA().size() * dataCenterMaxValue.getR();
                         if (min > temp) { 
                             min = temp;
