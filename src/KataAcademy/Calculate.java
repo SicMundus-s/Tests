@@ -1,3 +1,5 @@
+package KataAcademy;
+
 class Calculate {
     public static int getArabResult(int calculateValueOne, int calculateValueTwo, char mathematicalOperation) {
         int arabicResult = 0;

@@ -1,3 +1,5 @@
+package KataAcademy;
+
 class MathematicalOperation {
 
     // Ищем нужный символ в строке. indexOf() возвращает индекс первого вхождения символа в строке

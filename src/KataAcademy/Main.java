@@ -1,3 +1,5 @@
+package KataAcademy;
+
 import java.util.Scanner;
 
 
