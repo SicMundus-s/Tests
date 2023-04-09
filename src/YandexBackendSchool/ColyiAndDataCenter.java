@@ -1,8 +1,6 @@
 package YandexBackendSchool;
 
 import java.util.*;
-import java.util.stream.Collectors;
-import java.util.stream.IntStream;
 
 public class ColyiAndDataCenter {
     private int n; // Число дата-центров
@@ -16,8 +14,9 @@ public class ColyiAndDataCenter {
         m = scanner.nextInt();
         q = scanner.nextInt();
 
+
         for (int i = 0; i < n; i++) {
-            List<Integer> a = new ArrayList<>(m);
+            List<Integer> a = new LinkedList<>();
             for (int j = 0; j < m; j++) {
                 a.add(j + 1);
             }
