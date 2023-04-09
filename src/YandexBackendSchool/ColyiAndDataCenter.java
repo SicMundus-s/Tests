@@ -1,6 +1,9 @@
 package YandexBackendSchool;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Scanner;
 
 public class ColyiAndDataCenter {
     private int n; // Число дата-центров
@@ -16,12 +19,7 @@ public class ColyiAndDataCenter {
 
 
         for (int i = 0; i < n; i++) {
-            List<Integer> a = new LinkedList<>();
-            for (int j = 0; j < m; j++) {
-                a.add(j + 1);
-            }
-            DataCenter center = new DataCenter();
-            center.setA(a);
+            DataCenter center = new DataCenter(m);
             dataCenters.add(center);
         }
 
@@ -40,12 +38,8 @@ public class ColyiAndDataCenter {
 
             switch (operation) {
                 case ("RESET") -> {
-                    List<Integer> a = new ArrayList<>();
-                    for (int j = 0; j < m; j++) {
-                        a.add(j + 1);
-                    }
                    DataCenter dataCenter = dataCenters.get(idDataCenter - 1);
-                   dataCenter.reset(a);
+                   dataCenter.reset(m);
                 }
 
                 case ("DISABLE") -> {
@@ -57,7 +51,7 @@ public class ColyiAndDataCenter {
                     int id = 1;
                     for (int j = 0; j < dataCenters.size(); j++) {
                         DataCenter dataCenterMaxValue = dataCenters.get(j);
-                        int temp = dataCenterMaxValue.getA().size() * dataCenterMaxValue.getR();
+                        int temp = dataCenterMaxValue.getServersDataCenter() * dataCenterMaxValue.getR();
                         if (max < temp) {
                             max = temp;
                             id = i + 1;
@@ -70,7 +64,7 @@ public class ColyiAndDataCenter {
                     int id = 1;
                     for (int j = 0; j < dataCenters.size(); j++) {
                         DataCenter dataCenterMaxValue = dataCenters.get(j);
-                        int temp = dataCenterMaxValue.getA().size() * dataCenterMaxValue.getR();
+                        int temp = dataCenterMaxValue.getServersDataCenter() * dataCenterMaxValue.getR();
                         if (min > temp) { 
                             min = temp;
                             id = i + 1;
