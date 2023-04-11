@@ -1,7 +1,6 @@
-package YandexBackendSchool;
+package YandexBackendSchool.Test1DataCenter;
 
 import java.util.ArrayList;
-import java.util.LinkedList;
 import java.util.List;
 
 public class DataCenter {

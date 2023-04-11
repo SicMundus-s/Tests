@@ -1,4 +1,4 @@
-package YandexBackendSchool;
+package YandexBackendSchool.Test1DataCenter;
 
 public class Main {
     public static void main(String[] args) {

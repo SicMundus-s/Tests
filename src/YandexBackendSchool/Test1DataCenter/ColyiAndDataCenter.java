@@ -1,7 +1,6 @@
-package YandexBackendSchool;
+package YandexBackendSchool.Test1DataCenter;
 
 import java.util.ArrayList;
-import java.util.LinkedList;
 import java.util.List;
 import java.util.Scanner;
 
@@ -12,10 +11,10 @@ public class ColyiAndDataCenter {
     private final List<DataCenter> dataCenters = new ArrayList<>();
 
     public void getMetrics() {
-        Scanner scanner = new Scanner(System.in);
-        n = scanner.nextInt();
-        m = scanner.nextInt();
-        q = scanner.nextInt();
+        Scanner scannerValue = new Scanner(System.in);
+        n = scannerValue.nextInt();
+        m = scannerValue.nextInt();
+        q = scannerValue.nextInt();
 
 
         for (int i = 0; i < n; i++) {
@@ -26,23 +25,20 @@ public class ColyiAndDataCenter {
 
         // Обработка событий
         for (int i = 0; i < q; i++) {
+            Scanner scannerOperator = new Scanner(System.in);
             int idDataCenter = 0;
             int serverDataCenter = 0;
-            String operation = scanner.next();
-            if(scanner.hasNextInt()) {
-                 idDataCenter = scanner.nextInt(); // id дата центра
-            }
-            if (scanner.hasNextInt()) {
-                 serverDataCenter = scanner.nextInt();// id сервера в определённом дата центре
-            }
-
+            String operation = scannerOperator.next();
             switch (operation) {
                 case ("RESET") -> {
+                   idDataCenter = scannerOperator.nextInt();
                    DataCenter dataCenter = dataCenters.get(idDataCenter - 1);
                    dataCenter.reset(m);
                 }
 
                 case ("DISABLE") -> {
+                    idDataCenter = scannerOperator.nextInt();
+                    serverDataCenter = scannerOperator.nextInt();
                     DataCenter dataCenter = dataCenters.get(idDataCenter - 1);
                     dataCenter.disable(serverDataCenter);
                 }
@@ -54,7 +50,7 @@ public class ColyiAndDataCenter {
                         int temp = dataCenterMaxValue.getServersDataCenter() * dataCenterMaxValue.getR();
                         if (max < temp) {
                             max = temp;
-                            id = i + 1;
+                            id =  j + 1;
                         }
                     }
                     System.out.println(id);
