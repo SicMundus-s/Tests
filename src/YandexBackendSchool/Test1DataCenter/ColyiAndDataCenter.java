@@ -43,7 +43,7 @@ public class ColyiAndDataCenter {
                     dataCenter.disable(serverDataCenter);
                 }
                 case ("GETMAX") -> {
-                    int max = 0;
+                    int max = Integer.MIN_VALUE;
                     int id = 1;
                     for (int j = 0; j < dataCenters.size(); j++) {
                         DataCenter dataCenterMaxValue = dataCenters.get(j);
@@ -56,14 +56,14 @@ public class ColyiAndDataCenter {
                     System.out.println(id);
                 }
                 case ("GETMIN") -> {
-                    int min = 0;
+                    int min = Integer.MAX_VALUE;
                     int id = 1;
                     for (int j = 0; j < dataCenters.size(); j++) {
                         DataCenter dataCenterMaxValue = dataCenters.get(j);
                         int temp = dataCenterMaxValue.getServersDataCenter() * dataCenterMaxValue.getR();
-                        if (min > temp) { 
+                        if (min > temp) {
                             min = temp;
-                            id = i + 1;
+                            id = j + 1;
                         }
                     }
                     System.out.println(id);
